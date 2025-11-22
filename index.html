@@ -1,0 +1,766 @@
+index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EDRO | Cartório Forense™ — Modelagem Financeira e Execução Extrajudicial</title>
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1120;
+      --card: #020617;
+      --accent: #5eead4;
+      --accent-soft: rgba(94, 234, 212, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #f97373;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --radius-lg: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1000px 800px at 10% -10%, #1d293b, #020617),
+                  radial-gradient(900px 900px at 110% 110%, #0b1120, #020617);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.9), rgba(2,6,23,0.6));
+      border-bottom: 1px solid rgba(31, 41, 55, 0.8);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 20% 0%, #a5f3fc, #5eead4 40%, #06b6d4 80%);
+      display: grid;
+      place-items: center;
+      color: #020617;
+      font-weight: 900;
+      font-size: 1.2rem;
+      box-shadow: 0 14px 30px rgba(94, 234, 212, 0.35);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: .03em;
+    }
+
+    .brand-sub {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: .9rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #5eead4, #22c55e);
+      transition: width .22s ease-out;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .header-cta {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(94, 234, 212, 0.5);
+      font-size: .82rem;
+      color: var(--accent);
+      background: radial-gradient(circle at 0% 0%, rgba(94, 234, 212, 0.12), transparent);
+    }
+
+    /* Hero */
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 64px 20px 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 2.6rem;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #e5e7eb, #5eead4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(20,184,166,0.16), rgba(37,99,235,0.12));
+      border: 1px solid rgba(94,234,212,0.3);
+      color: #a5f3fc;
+      font-size: .74rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-tag span:last-child {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 20px;
+      max-width: 560px;
+    }
+
+    .hero-kpi-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-size: .84rem;
+      color: #9ca3af;
+    }
+
+    .hero-kpi {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(31,41,55,0.9);
+      background: rgba(15,23,42,0.9);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #5eead4, #22c55e);
+      color: #020617;
+      padding: 13px 20px;
+      border-radius: 999px;
+      border: none;
+      font-size: .98rem;
+      font-weight: 800;
+      box-shadow: 0 18px 40px rgba(34, 197, 94, 0.3);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary span {
+      font-size: 1.15rem;
+    }
+
+    .btn-ghost {
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.9);
+      color: var(--muted);
+      font-size: .88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-note {
+      font-size: .78rem;
+      color: #6b7280;
+      margin-top: 8px;
+    }
+
+    /* Hero right: card visual */
+
+    .hero-visual {
+      background: radial-gradient(circle at 0% 0%, rgba(94,234,212,0.1), rgba(15,23,42,1));
+      border-radius: 28px;
+      border: 1px solid rgba(31,41,55,0.9);
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    .hero-visual-pill {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(94,234,212,0.4);
+      background: rgba(15,23,42,0.85);
+      font-size: .72rem;
+      color: #a5f3fc;
+    }
+
+    .hero-visual-main {
+      border-radius: 18px;
+      border: 1px solid rgba(31,41,55,0.9);
+      background: rgba(15,23,42,0.95);
+      padding: 14px;
+    }
+
+    .hero-visual-main h3 {
+      font-size: .96rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-visual-main p {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-visual-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .kpi-card {
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid rgba(31,41,55,0.9);
+      padding: 8px;
+      font-size: .76rem;
+    }
+
+    .kpi-card span {
+      display: block;
+    }
+
+    .kpi-label {
+      color: #9ca3af;
+      margin-bottom: 3px;
+    }
+
+    .kpi-value {
+      font-weight: 800;
+      font-size: .92rem;
+    }
+
+    .kpi-flag {
+      font-size: .68rem;
+      color: #f97373;
+    }
+
+    .hero-visual-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: .72rem;
+      color: #9ca3af;
+    }
+
+    .hero-visual-footer span.badge {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px dashed rgba(94,234,212,0.5);
+      color: #a5f3fc;
+    }
+
+    /* Sections */
+
+    .section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    .section-kicker {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      background: linear-gradient(135deg,#e5e7eb,#5eead4);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: .97rem;
+      max-width: 720px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 18px 16px 18px;
+      box-shadow: 0 12px 32px rgba(15,23,42,0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0% 0%, rgba(94,234,212,0.14), transparent);
+      opacity: 0;
+      transition: opacity .2s ease-out;
+      pointer-events: none;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: var(--accent);
+    }
+
+    .card p {
+      font-size: .9rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .card small {
+      font-size: .78rem;
+      color: #6b7280;
+    }
+
+    .cta-block {
+      text-align: center;
+      background: radial-gradient(650px at 50% 0%, rgba(56,189,248,0.16), rgba(15,23,42,1));
+      border-radius: 26px;
+      border: 1px solid rgba(31,41,55,0.9);
+      padding: 32px 20px 30px;
+      box-shadow: var(--shadow-soft);
+      margin-top: 16px;
+    }
+
+    .cta-block h2 {
+      font-size: 1.7rem;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg,#e5e7eb,#5eead4);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .cta-block p {
+      color: var(--muted);
+      font-size: .96rem;
+      margin-bottom: 18px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-inline {
+      display: inline-flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .badge-soft {
+      font-size: .75rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      color: #9ca3af;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31,41,55,0.9);
+      padding: 20px;
+      text-align: center;
+      color: #6b7280;
+      font-size: .8rem;
+      background: #020617;
+    }
+
+    /* Responsivo */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 40px;
+      }
+      .hero-text h1 {
+        font-size: 2.1rem;
+      }
+      nav {
+        display: none;
+      }
+      .header-inner {
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 28px;
+      }
+      .hero-visual {
+        margin-top: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo">E</div>
+        <div class="brand-text">
+          <span class="brand-title">EDRO | Cartório Forense™</span>
+          <span class="brand-sub">Modelagem Financeira Forense & Execução Extrajudicial</span>
+        </div>
+      </div>
+      <nav>
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#fluxo">Como funciona</a>
+        <a href="#contato">Contato</a>
+        <a class="header-cta" href="#demo">Ver demonstração</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero" id="topo">
+      <div class="hero-text">
+        <div class="hero-tag">
+          <span>Nova era da execução extrajudicial</span>
+          <span>EDRO · Legal & Forensic</span>
+        </div>
+        <h1>O padrão de referência em modelagem financeira para cartórios e agentes de garantia.</h1>
+        <p>
+          O EDRO | Cartório Forense™ combina engenharia financeira, normatividade
+          jurídica e governança cartorial para dar segurança, exatidão e rastreabilidade
+          a cada execução extrajudicial sob o Marco Legal das Garantias.
+        </p>
+
+        <div class="hero-kpi-row">
+          <div class="hero-kpi">✔ Relatórios forenses auditáveis</div>
+          <div class="hero-kpi">✔ Depósito em valor controverso tecnicamente fundamentado</div>
+          <div class="hero-kpi">✔ Proteção contra consolidação indevida da propriedade</div>
+        </div>
+
+        <div class="hero-cta-row" id="demo">
+          <a class="btn-primary" href="mvp/index.html">
+            <span>●</span>
+            Acessar Demo Interativa (MVP)
+          </a>
+          <a class="btn-ghost" href="#contato">
+            Falar com a EDRO
+          </a>
+        </div>
+        <div class="hero-note">
+          * Demo ilustrativa: a versão completa inclui assinatura digital ICP-Brasil, QR Code EDRO Ledger™ e integração plena ao SERP.
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-visual-header">
+          <span>Visão forense da prestação</span>
+          <span class="hero-visual-pill">Simulação · Caso real anonimizado</span>
+        </div>
+        <div class="hero-visual-main">
+          <h3>Comparativo de parcelas — Banco x Laudo EDRO</h3>
+          <p>Diferença apurada por modelagem financeira forense em contrato habitacional com juros bonificados e TR.</p>
+          <div class="hero-visual-kpis">
+            <div class="kpi-card">
+              <span class="kpi-label">Parcela Banco</span>
+              <span class="kpi-value">R$ 2.180,00</span>
+              <span class="kpi-flag">Base cobrança atual</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Parcela Forense</span>
+              <span class="kpi-value">R$ 1.780,00</span>
+              <span class="kpi-flag">Cálculo EDRO</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Diferença por parcela</span>
+              <span class="kpi-value" style="color:#f97373">R$ 400,00</span>
+              <span class="kpi-flag">Indício de sobrecobrança</span>
+            </div>
+          </div>
+          <p style="font-size:.78rem;color:#9ca3af;">
+            A cada laudo, o sistema reconstrói o fluxo financeiro, aplica a legislação pertinente
+            (Lei 9.514/97, Res. CMN, CDC) e gera um relatório tecnicamente defensável.
+          </p>
+        </div>
+        <div class="hero-visual-footer">
+          <span>Relatório com memória de cálculo + fundamentos normativos</span>
+          <span class="badge">Pronto para uso cartorial</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNCIONALIDADES -->
+    <section class="section" id="funcionalidades">
+      <div class="section-header">
+        <div class="section-kicker">O que o sistema entrega</div>
+        <h2 class="section-title">Funcionalidades centrais do EDRO | Cartório Forense™</h2>
+        <p class="section-sub">
+          O sistema foi desenhado para atuar como um “motor forense” da execução extrajudicial,
+          oferecendo aos cartórios e agentes de garantia instrumentos técnicos sólidos para
+          decisões com impacto patrimonial elevado.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3>📊 Auditoria automática de contratos</h3>
+          <p>
+            Reconstrução do fluxo financeiro (SAC/PRICE, TR, juros bonificados, seguros, taxas),
+            identificação de discrepâncias e integração a parâmetros oficiais.
+          </p>
+          <small>Reduz o risco de executar contratos com vícios matemáticos ou encargos aplicados de forma irregular.</small>
+        </article>
+        <article class="card">
+          <h3>🧮 Memória de cálculo forense</h3>
+          <p>
+            Geração de memória de cálculo completa, detalhando fórmulas, índices, bases de dados
+            e hipóteses técnicas utilizadas em cada laudo.
+          </p>
+          <small>Cada resultado é rastreável, replicável e apto a escrutínio técnico em eventual impugnação.</small>
+        </article>
+        <article class="card">
+          <h3>🔐 Suporte ao depósito em valor controverso</h3>
+          <p>
+            Cálculo do valor tecnicamente devido e suporte ao depósito em conta específica, protegendo
+            o devedor de boa-fé enquanto se apura a controvérsia.
+          </p>
+          <small>Alinha-se ao CDC e à distribuição dinâmica do ônus da prova.</small>
+        </article>
+        <article class="card">
+          <h3>📁 Relatórios certificados e prontos para o cartório</h3>
+          <p>
+            Emissão de relatórios forenses com assinatura digital (ICP-Brasil), QR Code EDRO Ledger™
+            e trilha de auditoria para validação posterior.
+          </p>
+          <small>Documentos aptos a instruir a execução extrajudicial e eventual controle judicial.</small>
+        </article>
+        <article class="card">
+          <h3>⚙️ Integração com SERP e fluxos internos</h3>
+          <p>
+            Arquitetura compatível com o ambiente digital do SERP e com sistemas internos de gestão
+            cartorial, preservando padrões de segurança e conformidade.
+          </p>
+          <small>Preparado para se acoplar à nova infraestrutura digital dos registros públicos.</small>
+        </article>
+        <article class="card">
+          <h3>🧠 Inteligência EDRO incorporada</h3>
+          <p>
+            O sistema é alimentado pela Megaestrutura Decisória e Resolutiva da EDRO, trazendo
+            consigo heurísticas, protocolos e modelos validados em estudos de caso reais.
+          </p>
+          <small>Tecnologia desenvolvida especificamente para o ambiente forense e extrajudicial brasileiro.</small>
+        </article>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="section" id="diferenciais">
+      <div class="section-header">
+        <div class="section-kicker">Por que EDRO?</div>
+        <h2 class="section-title">Diferenciais estratégicos para cartórios e investidores</h2>
+        <p class="section-sub">
+          EDRO | Cartório Forense™ não é apenas um software: é uma camada de inteligência que
+          protege decisões extrajudiciais com matemática, normas e governança.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3>⚖️ Aderência normativa</h3>
+          <p>
+            Construído em alinhamento com Lei 9.514/97, Lei 14.711/2023 (Marco Legal das Garantias),
+            Lei 14.382/2022 (SERP), resoluções do CMN/BACEN e CDC.
+          </p>
+          <small>Reduz risco regulatório e fortalece a segurança jurídica dos atos praticados.</small>
+        </article>
+        <article class="card">
+          <h3>🔍 Transparência e rastreabilidade</h3>
+          <p>
+            Cada laudo é acompanhado de memória de cálculo e metadados que permitem rastrear
+            a origem de cada número, índice e hipótese utilizada.
+          </p>
+          <small>Fundamental para resistir a impugnações técnicas e questionamentos judiciais.</small>
+        </article>
+        <article class="card">
+          <h3>🏛️ Proteção institucional</h3>
+          <p>
+            Ao apoiar seus atos em laudos tecnicamente robustos, o cartório reduz sua exposição
+            a nulidades e responsabilizações futuras.
+          </p>
+          <small>A decisão extrajudicial passa a estar ancorada em prova técnica estruturada.</small>
+        </article>
+        <article class="card">
+          <h3>📈 Escalabilidade nacional</h3>
+          <p>
+            Arquitetura pensada para ser replicada em dezenas ou centenas de serventias, com
+            consistência de resultados e atualização centralizada.
+          </p>
+          <small>Suporta projetos em nível estadual, regional ou nacional.</small>
+        </article>
+      </div>
+
+      <div class="cta-block" id="fluxo">
+        <h2>Como o EDRO | Cartório Forense™ se encaixa no fluxo extrajudicial</h2>
+        <p>
+          A partir do envio do contrato digital e de dados básicos (indexadores, sistema de amortização,
+          histórico de reajustes), o sistema reconstrói o fluxo financeiro, aplica a legislação cabível,
+          identifica eventuais distorções e devolve ao cartório um laudo forense completo,
+          pronto para instruir o procedimento extrajudicial.
+        </p>
+        <div class="cta-inline">
+          <a class="btn-primary" href="mailto:contato@edro.com.br?subject=EDRO%20Cartorio%20Forense%20-%20Demonstra%C3%A7%C3%A3o">
+            Solicitar reunião técnica
+          </a>
+          <span class="badge-soft">Demonstração dirigida a cartórios, corregedorias e investidores estratégicos.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO / CTA FINAL -->
+    <section class="section" id="contato">
+      <div class="section-header">
+        <div class="section-kicker">Parceria estratégica</div>
+        <h2 class="section-title">Pronto para construir o novo padrão de execução extrajudicial?</h2>
+        <p class="section-sub">
+          A EDRO está preparada para trabalhar ao lado de cartórios, associações e investidores
+          que desejam liderar a transformação da execução extrajudicial baseada em ciência,
+          transparência e responsabilidade institucional.
+        </p>
+      </div>
+
+      <div class="cta-block">
+        <h2>Vamos desenhar o primeiro projeto-piloto.</h2>
+        <p>
+          Um piloto bem estruturado pode se tornar referência para todo o país. A partir de um
+          cartório ou de uma rede regional, é possível validar o modelo, documentar os resultados
+          e escalar com segurança.
+        </p>
+        <div class="cta-inline">
+          <a class="btn-primary" href="mailto:contato@edro.com.br?subject=Projeto-piloto%20EDRO%20Cartorio%20Forense">
+            Iniciar conversa com a EDRO
+          </a>
+          <span class="badge-soft">Missão EDRO: ajudar pessoas e instituições a tomarem as melhores decisões possíveis.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="ano"></span> EDRO — Excelência Organizacional · EDRO | Cartório Forense™  
+  </footer>
+
+  <script>
+    document.getElementById("ano").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
